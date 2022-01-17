@@ -11,6 +11,7 @@ export default function RenderPost({ isAuth }) {
   useEffect(() => {
     const getPosts = async () => {
       const data = await getDocs(postCollectionRef);
+      // console.log(data);
       setPostList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       // console.log(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
@@ -26,12 +27,12 @@ export default function RenderPost({ isAuth }) {
     return (
       <div
         className="col col-sm-12 col-md-6 col-lg-6 col-xl-6 user-form-col"
-        id={post.title}
+        id={post.id}
       >
         <Card>
           <Card.Header className="user-header">
-            <h3>{post.author.name}@Kurt Reynolds</h3>
-            <img src={blankProfilePic} alt="profile pic" />
+            <h3>@{post.author.name}</h3>
+            {/* <img src={blankProfilePic} alt="profile pic" /> */}
           </Card.Header>
           <Card.Body>{post.postText}</Card.Body>
         </Card>

@@ -1,11 +1,6 @@
-import React, { useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { auth, provider } from '../firebase-config';
-import { signInWithPopup } from 'firebase/auth';
+import React from 'react';
 
 export default function Login({ signInWithGoogle }) {
-  // const [isAuth, setIsAuth] = useState(false);
-
   return (
     <>
       <div>

@@ -2,11 +2,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import LandingPage from './LandingPage';
-import TempDashboard from './TempDashboard';
-import TempCreatePost from './TempCreatePost';
-import Navigation from './Navigation';
-import Login from './Login';
-
+import CreatePost from './CreatePost';
+import Dashboard from './Dashboard';
 export default function Main() {
   const [isAuth, setIsAuth] = useState(false);
 
@@ -22,9 +19,13 @@ export default function Main() {
         <Route
           exact
           path="/dashboard"
-          element={<TempDashboard isAuth={isAuth} setIsAuth={setIsAuth} />}
+          element={<Dashboard isAuth={isAuth} setIsAuth={setIsAuth} />}
         />
-        <Route exact path="/createpost" element={<TempCreatePost />} />
+        <Route
+          exact
+          path="/createpost"
+          element={<CreatePost isAuth={isAuth} setIsAuth={setIsAuth} />}
+        />
         {/* <Route path="/login" element={<Login />} /> */}
       </Routes>
     </div>

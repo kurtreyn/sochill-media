@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
-
 import navLogo from '../images/logo-sochill.png';
 
 export default function NavComponent({ signUserOut }) {

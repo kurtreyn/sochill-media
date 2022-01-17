@@ -1,17 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import NavComponent from './NavComponent';
+import React, { useState } from 'react';
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase-config';
+import { useNavigate } from 'react-router-dom';
+import Navigation from './Navigation';
 import RenderPost from './RenderPost';
-import TempRenderPost from './TempRenderPost';
 
-export default function Dashboard() {
+export default function TempDashboard({ isAuth, setIsAuth }) {
+  const navigate = useNavigate();
+
+  const signUserOut = () => {
+    signOut(auth).then(() => {
+      localStorage.clear();
+      setIsAuth(false);
+      navigate('/');
+    });
+  };
   return (
     <>
-      <NavComponent />
-
+      <Navigation
+        isAuth={isAuth}
+        setIsAuth={setIsAuth}
+        signUserOut={signUserOut}
+      />
       <div className="container-fluid">
         <div className="row user-row">
-          {/* <RenderPost /> */}
-          <TempRenderPost />
+          <RenderPost />
         </div>
       </div>
     </>

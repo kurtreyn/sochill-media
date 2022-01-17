@@ -1,10 +1,9 @@
-import logo from '../images/logo-sochill.png';
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth, provider } from '../firebase-config';
 import { signInWithPopup } from 'firebase/auth';
-// import TempLogin from './TempLogin';
 import Login from './Login';
+import logo from '../images/logo-sochill.png';
 
 export default function LandingPage({ setIsAuth }) {
   const navigate = useNavigate();
