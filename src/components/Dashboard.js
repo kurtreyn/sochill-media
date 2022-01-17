@@ -5,8 +5,10 @@ import { useNavigate } from 'react-router-dom';
 import Navigation from './Navigation';
 import RenderPost from './RenderPost';
 import CreatePost from './CreatePost';
+import TempRenderPost from './TempRenderPost';
+import TempCreatePost from './TempCreatePost';
 
-export default function TempDashboard({ isAuth, setIsAuth }) {
+export default function Dashboard({ isAuth, setIsAuth }) {
   const navigate = useNavigate();
 
   const signUserOut = () => {
@@ -25,8 +27,10 @@ export default function TempDashboard({ isAuth, setIsAuth }) {
       />
       <div className="container-fluid">
         <div className="row user-row">
-          <CreatePost isAuth={isAuth} setIsAuth={setIsAuth} />
-          <RenderPost />
+          {/* <CreatePost isAuth={isAuth} setIsAuth={setIsAuth} /> */}
+          <TempCreatePost isAuth={isAuth} setIsAuth={setIsAuth} />
+          {/* <RenderPost /> */}
+          <TempRenderPost />
         </div>
       </div>
     </>

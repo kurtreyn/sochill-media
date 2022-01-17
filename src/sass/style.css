@@ -181,8 +181,17 @@ body {
   max-width: 10%;
 }
 
-.hide-item {
-  display: none;
+.modal-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.modal-row .btn-create-post {
+  margin-left: 0;
 }
 
 /* GOOGLE BUTTOn */
