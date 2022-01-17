@@ -10,7 +10,8 @@ export default function CreatePost({ isAuth }) {
 
   function updateText(e) {
     setPostText(e.target.value.trim());
-    console.log(postText);
+    // console.log(postText);
+    console.log(`isAuth is: ${isAuth}`);
   }
 
   const postCollectionRef = collection(db, 'posts');

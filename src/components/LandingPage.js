@@ -5,7 +5,7 @@ import { signInWithPopup } from 'firebase/auth';
 import Login from './Login';
 import logo from '../images/logo-sochill.png';
 
-export default function LandingPage({ setIsAuth }) {
+export default function LandingPage({ isAuth, setIsAuth }) {
   const navigate = useNavigate();
 
   const signInWithGoogle = () => {
