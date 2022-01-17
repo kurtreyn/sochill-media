@@ -25,21 +25,13 @@ function App() {
 
   return (
     <HashRouter>
-      <nav>
-        <Link to="/"> Home </Link>
+      <LandingPage />
+      {/* <Dashboard /> */}
 
-        {!isAuth ? (
-          <Link to="/login"> Login </Link>
-        ) : (
-          <>
-            <Link to="/createpost"> Create Post </Link>
-            <button onClick={signUserOut}> Log Out</button>
-          </>
-        )}
-      </nav>
       <Routes>
-        <Route path="/" element={<Dashboard isAuth={isAuth} />} />
-        <Route path="/createpost" element={<CreatePost isAuth={isAuth} />} />
+        <Route exact path="/" element={<LandingPage isAuth={isAuth} />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/createpost" element={<CreatePost />} />
         <Route path="/login" element={<Login setIsAuth={setIsAuth} />} />
       </Routes>
     </HashRouter>

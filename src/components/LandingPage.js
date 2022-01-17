@@ -2,7 +2,7 @@ import logo from '../images/logo-sochill.png';
 import React, { useState } from 'react';
 import Login from './Login';
 
-export default function LandingPage() {
+export default function LandingPage({ isAuth }) {
   return (
     <div className="container-fluid">
       <div className="row custom-row landing-row">

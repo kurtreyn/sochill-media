@@ -4,14 +4,18 @@ import { Button } from 'react-bootstrap';
 import { auth, provider } from '../firebase-config';
 import { signInWithPopup } from 'firebase/auth';
 
-export default function Login({ setIsAuth }) {
+export default function Login({ isAuth, setIsAuth }) {
   const navigate = useNavigate();
+
+  function changeAuth() {
+    setIsAuth(true);
+  }
 
   const signInWithGoogle = () => {
     signInWithPopup(auth, provider).then((result) => {
       localStorage.setItem('isAuth', true);
-      setIsAuth(true);
-      navigate('/');
+      changeAuth();
+      navigate('/dashboard');
     });
   };
 
