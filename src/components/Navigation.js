@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import navLogo from '../images/logo-sochill.png';
 
-export default function NavComponent({ signUserOut }) {
+export default function NavComponent({ signUserOut, isAuth, setIsAuth }) {
   return (
     <>
       <Navbar className="custom-nav">

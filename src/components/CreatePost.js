@@ -5,7 +5,7 @@ import { db, auth } from '../firebase-config';
 import { useNavigate } from 'react-router-dom';
 import blankProfilePic from '../images/blank-profile-pic.png';
 
-export default function CreatePost({ isAuth }) {
+export default function CreatePost({ isAuth, setIsAuth }) {
   const [postText, setPostText] = useState('');
 
   function updateText(e) {

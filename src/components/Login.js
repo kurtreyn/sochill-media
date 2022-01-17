@@ -1,6 +1,18 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { auth, provider } from '../firebase-config';
+import { signInWithPopup } from 'firebase/auth';
 
-export default function Login({ signInWithGoogle }) {
+export default function Login({ isAuth, setIsAuth }) {
+  const navigate = useNavigate();
+
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, provider).then((result) => {
+      localStorage.setItem('isAuth', true);
+      setIsAuth(true);
+      navigate('/dashboard');
+    });
+  };
   return (
     <>
       <div>
