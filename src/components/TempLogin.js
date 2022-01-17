@@ -6,7 +6,9 @@ export default function TempLogin() {
     <>
       <div>TEMP Login Component</div>
       <div>
-        <Link to="/dashboard">LOGIN </Link>
+        <Link to="/dashboard">
+          <button className="login-with-google-btn">Sign in with Google</button>
+        </Link>
       </div>
     </>
   );

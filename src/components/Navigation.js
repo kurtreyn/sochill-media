@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Navbar, Nav, Container, Button } from 'react-bootstrap';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 
 import navLogo from '../images/logo-sochill.png';
 
-export default function NavComponent() {
+export default function NavComponent({ signUserOut }) {
   return (
     <>
       <Navbar className="custom-nav">
@@ -14,9 +14,11 @@ export default function NavComponent() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/">home</Nav.Link>
-              <Nav.Link href="/createpost">create post</Nav.Link>
-              <Nav.Link href="">log out</Nav.Link>
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/createpost">Create Post</Nav.Link>
+              <Nav.Link href="" onClick={signUserOut}>
+                Sign Out
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

@@ -1,9 +1,21 @@
 import logo from '../images/logo-sochill.png';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { auth, provider } from '../firebase-config';
+import { signInWithPopup } from 'firebase/auth';
+// import TempLogin from './TempLogin';
 import Login from './Login';
-import TempLogin from './TempLogin';
 
-export default function LandingPage({ isAuth }) {
+export default function LandingPage({ setIsAuth }) {
+  const navigate = useNavigate();
+
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, provider).then((result) => {
+      localStorage.setItem('isAuth', true);
+      setIsAuth(true);
+      navigate('/dashboard');
+    });
+  };
   return (
     <div className="container-fluid">
       <div className="row custom-row landing-row">
@@ -12,7 +24,7 @@ export default function LandingPage({ isAuth }) {
           <img src={logo} alt="logo" />
         </div>
         <div className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 form-col">
-          <TempLogin />
+          <Login setIsAuth={setIsAuth} signInWithGoogle={signInWithGoogle} />
         </div>
       </div>
     </div>
