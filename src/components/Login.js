@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { auth, provider } from '../firebase-config';
 import { signInWithPopup } from 'firebase/auth';
+import { Link } from 'react-router-dom';
 
 export default function Login({ isAuth, setIsAuth }) {
   const navigate = useNavigate();
@@ -21,9 +22,10 @@ export default function Login({ isAuth, setIsAuth }) {
 
   return (
     <>
-      <button className="login-with-google-btn" onClick={signInWithGoogle}>
+      {/* <button className="login-with-google-btn" onClick={signInWithGoogle}>
         Sign in with Google
-      </button>
+      </button> */}
+      <Link></Link>
     </>
   );
 }

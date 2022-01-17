@@ -13,26 +13,29 @@ import Login from './components/Login';
 import Main from './components/Main';
 
 function App() {
-  const [isAuth, setIsAuth] = useState(localStorage.getItem('isAuth'));
+  // const [isAuth, setIsAuth] = useState(localStorage.getItem('isAuth'));
 
-  const signUserOut = () => {
-    signOut(auth).then(() => {
-      localStorage.clear();
-      setIsAuth(false);
-      window.location.pathname = '/login';
-    });
-  };
+  // const signUserOut = () => {
+  //   signOut(auth).then(() => {
+  //     localStorage.clear();
+  //     setIsAuth(false);
+  //     window.location.pathname = '/login';
+  //   });
+  // };
 
   return (
     <HashRouter>
-      <LandingPage />
-      {/* <Dashboard /> */}
-
+      <nav>
+        <Link to="/"> Home </Link>
+        <Link to="/login"> Login </Link>
+        <>
+          <Link to="/createpost"> Create Post </Link>
+        </>
+      </nav>
       <Routes>
-        <Route exact path="/" element={<LandingPage isAuth={isAuth} />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/" element={<Dashboard />} />
         <Route path="/createpost" element={<CreatePost />} />
-        <Route path="/login" element={<Login setIsAuth={setIsAuth} />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </HashRouter>
   );
