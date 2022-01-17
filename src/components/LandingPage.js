@@ -1,6 +1,7 @@
 import logo from '../images/logo-sochill.png';
 import React, { useState } from 'react';
 import Login from './Login';
+import TempLogin from './TempLogin';
 
 export default function LandingPage({ isAuth }) {
   return (
@@ -11,7 +12,7 @@ export default function LandingPage({ isAuth }) {
           <img src={logo} alt="logo" />
         </div>
         <div className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 form-col">
-          <Login />
+          <TempLogin />
         </div>
       </div>
     </div>
