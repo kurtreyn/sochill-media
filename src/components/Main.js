@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import LandingPage from './LandingPage';
 import CreatePost from './CreatePost';
 import Dashboard from './Dashboard';
+
 export default function Main() {
   const [isAuth, setIsAuth] = useState(false);
 
@@ -21,11 +22,11 @@ export default function Main() {
           path="/dashboard"
           element={<Dashboard isAuth={isAuth} setIsAuth={setIsAuth} />}
         />
-        <Route
+        {/* <Route
           exact
           path="/createpost"
           element={<CreatePost isAuth={isAuth} setIsAuth={setIsAuth} />}
-        />
+        /> */}
         {/* <Route path="/login" element={<Login />} /> */}
       </Routes>
     </div>

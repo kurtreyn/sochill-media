@@ -4,9 +4,9 @@ import { auth } from '../firebase-config';
 import { useNavigate } from 'react-router-dom';
 import Navigation from './Navigation';
 import RenderPost from './RenderPost';
-import CreatePost from './CreatePost';
+import CreatePostOLD from './CreatePostOLD';
 import TempRenderPost from './TempRenderPost';
-import TempCreatePost from './TempCreatePost';
+import CreatePost from './CreatePost';
 
 export default function Dashboard({ isAuth, setIsAuth }) {
   const navigate = useNavigate();
@@ -27,8 +27,7 @@ export default function Dashboard({ isAuth, setIsAuth }) {
       />
       <div className="container-fluid">
         <div className="row user-row">
-          {/* <CreatePost isAuth={isAuth} setIsAuth={setIsAuth} /> */}
-          <TempCreatePost isAuth={isAuth} setIsAuth={setIsAuth} />
+          <CreatePost isAuth={isAuth} setIsAuth={setIsAuth} />
           <RenderPost />
           {/* <TempRenderPost /> */}
         </div>

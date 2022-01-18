@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { Form, Button, Card } from 'react-bootstrap';
+import React, { useState } from 'react';
 import { addDoc, collection } from 'firebase/firestore';
 import { db, auth } from '../firebase-config';
 import { useNavigate } from 'react-router-dom';
+import { Modal, Button, Form } from 'react-bootstrap';
 import blankProfilePic from '../images/blank-profile-pic.png';
 
 export default function CreatePost({ isAuth, setIsAuth }) {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const [postText, setPostText] = useState('');
 
   function updateText(e) {
@@ -22,24 +25,26 @@ export default function CreatePost({ isAuth, setIsAuth }) {
       postText: postText,
       author: { name: auth.currentUser.displayName, id: auth.currentUser.uid },
     });
+    handleClose();
     navigate('/dashboard');
   };
 
-  //   useEffect(() => {
-  //     if (!isAuth) {
-  //       navigate('/');
-  //     }
-  //   }, []);
-
   return (
     <>
-      <div className="col col-sm-12 col-md-6 col-lg-6 col-xl-6 user-form-col">
-        <Card>
-          <Card.Header className="user-header">
-            <h3>User Name</h3>
-            <img src={blankProfilePic} alt="profile pic" />
-          </Card.Header>
-          <Card.Body>
+      <div className="row modal-row">
+        <Button
+          variant="primary"
+          className="btn-create-post"
+          onClick={handleShow}
+        >
+          Create Post
+        </Button>
+
+        <Modal className="modal-window" show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>User Name</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
             <Form>
               <Form.Group id="post">
                 <Form.Control
@@ -48,13 +53,14 @@ export default function CreatePost({ isAuth, setIsAuth }) {
                   onChange={updateText}
                 />
               </Form.Group>
-
-              <Button className="mt-2" type="submit" onClick={createPost}>
-                post
-              </Button>
             </Form>
-          </Card.Body>
-        </Card>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="primary" onClick={createPost}>
+              Post
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     </>
   );

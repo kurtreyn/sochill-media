@@ -10,35 +10,33 @@ import { db, auth } from '../firebase-config';
 import { Button, Card } from 'react-bootstrap';
 import blankProfilePic from '../images/blank-profile-pic.png';
 
-const useFetch = (url) => {
-  const [postLists, setPostList] = useState([]);
-  const postCollectionRef = collection(db, 'posts');
+// const useFetch = (url) => {
+//   const [postLists, setPostList] = useState([]);
+//   const postCollectionRef = collection(db, 'posts');
 
-  useEffect(() => {
-    if (!postLists) {
-      const getPosts = async () => {
-        const data = await getDocs(url);
-        setPostList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-      };
-      getPosts();
-    }
-  }, [postLists]);
-};
+//   useEffect(() => {
+//     if (!postLists) {
+//       const getPosts = async () => {
+//         const data = await getDocs(url);
+//         setPostList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+//       };
+//       getPosts();
+//     }
+//   }, [postLists]);
+// };
 
 export default function RenderPost({ isAuth }) {
   const postCollectionRef = collection(db, 'posts');
-  const { postLists } = useFetch(postCollectionRef);
-  //   const [postLists, setPostList] = useState([]);
+  // const { postLists } = useFetch(postCollectionRef);
+  const [postLists, setPostList] = useState([]);
 
-  //   useEffect(() => {
-  //     if (!postLists) {
-  //       const getPosts = async () => {
-  //         const data = await getDocs(postCollectionRef);
-  //         setPostList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-  //       };
-  //       getPosts();
-  //     }
-  //   }, [postLists]);
+  useEffect(() => {
+    const getPosts = async () => {
+      const data = await getDocs(postCollectionRef);
+      setPostList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+    getPosts();
+  }, [postLists]);
 
   const deletePost = async (id) => {
     const postToDel = doc(db, 'posts', id);
@@ -49,7 +47,7 @@ export default function RenderPost({ isAuth }) {
     return (
       <div
         className="col col-sm-12 col-md-6 col-lg-6 col-xl-6 user-form-col"
-        id={post.id}
+        key={post.id}
       >
         <Card>
           <Card.Header className="user-header">
