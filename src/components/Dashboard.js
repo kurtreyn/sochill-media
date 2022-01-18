@@ -11,7 +11,6 @@ import CreatePost from './CreatePost';
 export default function Dashboard({ isAuth, setIsAuth }) {
   const navigate = useNavigate();
 
-
   const signUserOut = () => {
     signOut(auth).then(() => {
       localStorage.clear();
@@ -19,23 +18,6 @@ export default function Dashboard({ isAuth, setIsAuth }) {
       navigate('/');
     });
   };
-
-  useEffect(() => {
-    const getPosts = async () => {
-      const data = await getDocs(postCollectionRef);
-      setPostList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-
-      // console.log(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-    getPosts();
-  });
-
-  const deletePost = async (id) => {
-    const postToDel = doc(db, 'posts', id);
-    await deleteDoc(postToDel);
-  };
-
-
   return (
     <>
       <Navigation

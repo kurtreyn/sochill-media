@@ -22,15 +22,7 @@ export default function Main() {
           path="/dashboard"
           element={<Dashboard isAuth={isAuth} setIsAuth={setIsAuth} />}
         />
-        {/* <Route
-          exact
-          path="/createpost"
-          element={<CreatePost isAuth={isAuth} setIsAuth={setIsAuth} />}
-        /> */}
-        {/* <Route path="/login" element={<Login />} /> */}
       </Routes>
     </div>
   );
 }
-
-// https://youtu.be/zL0dKETbCNE?t=1130
