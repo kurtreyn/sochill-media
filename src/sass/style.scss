@@ -126,44 +126,14 @@ body {
       }
     }
   }
-
-  .feed-col {
-    margin-top: 2rem;
-
-    .feed-header {
-      display: flex;
-      align-items: flex-end;
-      img {
-        max-width: 10%;
-      }
-    }
-  }
 }
 
 .feed-row {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   margin-top: 1rem;
   margin-left: 0.5rem;
-
-  .user-form-col {
-    margin-top: 1rem;
-
-    .user-header {
-      display: flex;
-      align-items: flex-end;
-      img {
-        max-width: 10%;
-      }
-      .btnDelPost {
-        border: none;
-        background: none;
-        font-size: 15px;
-        margin-left: 100%;
-        cursor: pointer;
-      }
-    }
-  }
 
   .feed-col {
     margin-top: 2rem;

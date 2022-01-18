@@ -11,7 +11,7 @@ export default function TempRenderPost() {
       <Card>
         <Card.Header className="user-header">
           <h3>@Kurt Reynolds</h3>
-          <img src={blankProfilePic} alt="profile pic" />
+          {/* <img src={blankProfilePic} alt="profile pic" /> */}
         </Card.Header>
         <Card.Body>
           post text post text post text post text post text post text post text
