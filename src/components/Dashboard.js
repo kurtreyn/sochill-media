@@ -29,8 +29,8 @@ export default function Dashboard({ isAuth, setIsAuth }) {
         <div className="row user-row">
           {/* <CreatePost isAuth={isAuth} setIsAuth={setIsAuth} /> */}
           <TempCreatePost isAuth={isAuth} setIsAuth={setIsAuth} />
-          {/* <RenderPost /> */}
-          <TempRenderPost />
+          <RenderPost />
+          {/* <TempRenderPost /> */}
         </div>
       </div>
     </>
