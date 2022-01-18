@@ -55,19 +55,18 @@ export default function RenderPost({ isAuth }) {
             {/* <img src={blankProfilePic} alt="profile pic" /> */}
           </Card.Header>
           <Card.Body>{post.postText}</Card.Body>
-        </Card>
-        <div className="deletePost">
           {isAuth && post.author.id === auth.currentUser.uid && (
-            <button
+            <Card.Footer
+              className="text-muted"
               onClick={() => {
                 deletePost(post.id);
               }}
             >
               {' '}
-              &#128465;
-            </button>
+              Delete Post
+            </Card.Footer>
           )}
-        </div>
+        </Card>
       </div>
     );
   });
