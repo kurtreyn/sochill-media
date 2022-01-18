@@ -10,24 +10,9 @@ import { db, auth } from '../firebase-config';
 import { Button, Card } from 'react-bootstrap';
 import blankProfilePic from '../images/blank-profile-pic.png';
 
-// const useFetch = (url) => {
-//   const [postLists, setPostList] = useState([]);
-//   const postCollectionRef = collection(db, 'posts');
-
-//   useEffect(() => {
-//     if (!postLists) {
-//       const getPosts = async () => {
-//         const data = await getDocs(url);
-//         setPostList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-//       };
-//       getPosts();
-//     }
-//   }, [postLists]);
-// };
-
 export default function RenderPost({ isAuth }) {
   const postCollectionRef = collection(db, 'posts');
-  // const { postLists } = useFetch(postCollectionRef);
+
   const [postLists, setPostList] = useState([]);
 
   useEffect(() => {
@@ -36,7 +21,7 @@ export default function RenderPost({ isAuth }) {
       setPostList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     getPosts();
-  }, [postLists]);
+  }, []);
 
   const deletePost = async (id) => {
     const postToDel = doc(db, 'posts', id);
@@ -52,6 +37,7 @@ export default function RenderPost({ isAuth }) {
         <Card>
           <Card.Header className="user-header">
             <h3>@{post.author.name}</h3>
+
             {/* <img src={blankProfilePic} alt="profile pic" /> */}
           </Card.Header>
           <Card.Body>{post.postText}</Card.Body>

@@ -28,8 +28,9 @@ export default function Dashboard({ isAuth, setIsAuth }) {
       <div className="container-fluid">
         <div className="row user-row">
           <CreatePost isAuth={isAuth} setIsAuth={setIsAuth} />
+        </div>
+        <div className="feed-row">
           <RenderPost />
-          {/* <TempRenderPost /> */}
         </div>
       </div>
     </>

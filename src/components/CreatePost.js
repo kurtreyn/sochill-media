@@ -25,6 +25,7 @@ export default function CreatePost({ isAuth, setIsAuth }) {
       postText: postText,
       author: { name: auth.currentUser.displayName, id: auth.currentUser.uid },
     });
+    console.log(auth.currentUser.displayName);
     handleClose();
     navigate('/dashboard');
   };
@@ -42,7 +43,7 @@ export default function CreatePost({ isAuth, setIsAuth }) {
 
         <Modal className="modal-window" show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>User Name</Modal.Title>
+            <Modal.Title>{postCollectionRef.name}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form>

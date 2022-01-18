@@ -130,13 +130,8 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  margin-top: 1rem;
+  margin-left: 0.5rem;
 }
 
 .user-row .user-form-col {
@@ -178,6 +173,59 @@ body {
 }
 
 .user-row .feed-col .feed-header img {
+  max-width: 10%;
+}
+
+.feed-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+}
+
+.feed-row .user-form-col {
+  margin-top: 1rem;
+}
+
+.feed-row .user-form-col .user-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.feed-row .user-form-col .user-header img {
+  max-width: 10%;
+}
+
+.feed-row .user-form-col .user-header .btnDelPost {
+  border: none;
+  background: none;
+  font-size: 15px;
+  margin-left: 100%;
+  cursor: pointer;
+}
+
+.feed-row .feed-col {
+  margin-top: 2rem;
+}
+
+.feed-row .feed-col .feed-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.feed-row .feed-col .feed-header img {
   max-width: 10%;
 }
 
