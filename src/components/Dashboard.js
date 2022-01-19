@@ -29,10 +29,8 @@ export default function Dashboard({ isAuth, setIsAuth }) {
         <div className="row user-row">
           <CreatePost isAuth={isAuth} setIsAuth={setIsAuth} />
         </div>
-        <div className="feed-row">
-          <div className="feed-col">
-            <RenderPost />
-          </div>
+        <div className="row feed-row">
+          <RenderPost />
         </div>
       </div>
     </>
