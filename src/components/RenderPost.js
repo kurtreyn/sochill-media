@@ -13,7 +13,7 @@ import blankProfilePic from '../images/blank-profile-pic.png';
 export default function RenderPost({ isAuth }) {
   const postCollectionRef = collection(db, 'posts');
   const [postLists, setPostList] = useState([]);
-  // const { id } = { ...postLists };
+  let item = [];
 
   useEffect(() => {
     const getPosts = async () => {
@@ -21,8 +21,8 @@ export default function RenderPost({ isAuth }) {
       setPostList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     getPosts();
-    // console.log(id);
-  }, [postLists]);
+    console.log(`useEffect ran`);
+  }, []);
 
   const deletePost = async (id) => {
     const postToDel = doc(db, 'posts', id);
