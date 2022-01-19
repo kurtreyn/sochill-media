@@ -5,6 +5,7 @@ import {
   deleteDoc,
   doc,
   onSnapshot,
+  QuerySnapshot,
 } from 'firebase/firestore';
 import { db, auth } from '../firebase-config';
 import { Button, Card } from 'react-bootstrap';
@@ -12,16 +13,22 @@ import blankProfilePic from '../images/blank-profile-pic.png';
 
 export default function RenderPost({ isAuth }) {
   const postCollectionRef = collection(db, 'posts');
-  const [postLists, setPostList] = useState([]);
-  let item = [];
+  const [loading, setLoading] = useState(true);
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    const getPosts = async () => {
-      const data = await getDocs(postCollectionRef);
-      setPostList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    onSnapshot(postCollectionRef, (snapshot) => {
+      if (loading) {
+        const results = snapshot.docs.map((doc) => {
+          return { ...doc.data(), key: doc.id };
+        });
+        setPosts(results);
+      }
+    });
+
+    return () => {
+      loading = false;
     };
-    getPosts();
-    console.log(`useEffect ran`);
   }, []);
 
   const deletePost = async (id) => {
@@ -29,7 +36,7 @@ export default function RenderPost({ isAuth }) {
     await deleteDoc(postToDel);
   };
 
-  return postLists.map((post) => {
+  return posts.map((post) => {
     return (
       <div
         className="col col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 user-form-col"

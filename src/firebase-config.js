@@ -9,6 +9,12 @@ const firebaseConfig = {
   storageBucket: 'sochill-media.appspot.com',
   messagingSenderId: '568168940028',
   appId: '1:568168940028:web:d45d43ba3e44b2c6b4f279',
+  // apiKey: 'AIzaSyACynL4OEeEE1UGmxeUmKsemGa0_IC4-Tw',
+  // authDomain: 'sochill-dev.firebaseapp.com',
+  // projectId: 'sochill-dev',
+  // storageBucket: 'sochill-dev.appspot.com',
+  // messagingSenderId: '245556609935',
+  // appId: '1:245556609935:web:64df007aac6881ae5781fa',
 };
 
 // Initialize Firebase
