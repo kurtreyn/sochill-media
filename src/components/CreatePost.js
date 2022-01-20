@@ -26,6 +26,10 @@ export default function CreatePost({ isAuth, setIsAuth }) {
       author: { name: auth.currentUser.displayName, id: auth.currentUser.uid },
     });
     console.log(auth.currentUser.displayName);
+    console.log(auth.currentUser.uid);
+    // 9SEMWgnEGVO2axX5pESFxdOl22J2
+    // 9SEMWgnEGVO2axX5pESFxdOl22J2
+    // kreynwork
     handleClose();
     navigate('/dashboard');
   };

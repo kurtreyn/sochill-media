@@ -31,8 +31,8 @@ export default function RenderPost({ isAuth }) {
     };
   }, []);
 
-  const deletePost = async (id) => {
-    const postToDel = doc(db, 'posts', id);
+  const deletePost = async (key) => {
+    const postToDel = doc(db, 'posts', key);
     await deleteDoc(postToDel);
   };
 
@@ -46,7 +46,7 @@ export default function RenderPost({ isAuth }) {
           <Card.Header className="user-header">
             <h4>@{post.author.name}</h4>
 
-            {/* <img src={blankProfilePic} alt="profile pic" /> */}
+            {/* <img src={post.author.photoURL} alt="profile pic" /> */}
           </Card.Header>
           <Card.Body>{post.postText}</Card.Body>
           {isAuth && post.author.id === auth.currentUser.uid && (
