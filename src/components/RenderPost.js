@@ -7,7 +7,7 @@ import {
   onSnapshot,
   QuerySnapshot,
 } from 'firebase/firestore';
-import { db, auth } from '../firebase-config';
+import { db, auth, photoURL } from '../firebase-config';
 import { Button, Card } from 'react-bootstrap';
 import blankProfilePic from '../images/blank-profile-pic.png';
 
