@@ -5,7 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import { Modal, Button, Form } from 'react-bootstrap';
 import blankProfilePic from '../images/blank-profile-pic.png';
 
-export default function CreatePost({ isAuth, setIsAuth }) {
+export default function CreatePost({
+  isAuth,
+  setIsAuth,
+  photoURL,
+  currentUser,
+}) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -22,10 +27,14 @@ export default function CreatePost({ isAuth, setIsAuth }) {
 
   const createPost = async () => {
     await addDoc(postCollectionRef, {
+      photoURL: photoURL,
       postText: postText,
-      author: { name: auth.currentUser.displayName, id: auth.currentUser.uid },
+      author: {
+        name: currentUser.email,
+        id: auth.currentUser.uid,
+      },
     });
-    console.log(auth.currentUser.displayName);
+    console.log(currentUser.email);
     console.log(auth.currentUser.uid);
     // 9SEMWgnEGVO2axX5pESFxdOl22J2
     // 9SEMWgnEGVO2axX5pESFxdOl22J2

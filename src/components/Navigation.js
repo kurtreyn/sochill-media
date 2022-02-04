@@ -1,8 +1,36 @@
-import React, { useState } from 'react';
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { auth } from '../firebase-config';
+import { signOut } from 'firebase/auth';
+import { Navbar, Nav, Container, Modal } from 'react-bootstrap';
+import EditProfile from './EditProfile';
 import navLogo from '../images/logo-sochill.png';
+import avatar from '../images/profile-avatar.png';
 
-export default function NavComponent({ signUserOut, isAuth, setIsAuth }) {
+export default function NavComponent({
+  currentUser,
+  photoURL,
+  setPhotoURL,
+  handleShow,
+}) {
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
+
+  function logOut() {
+    return signOut(auth);
+  }
+
+  async function handleLogOut() {
+    setLoading(true);
+    try {
+      await logOut();
+    } catch {
+      alert('Error');
+    }
+    setLoading(false);
+    navigate('/');
+  }
   return (
     <>
       <Navbar className="custom-nav">
@@ -13,12 +41,20 @@ export default function NavComponent({ signUserOut, isAuth, setIsAuth }) {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="" onClick={signUserOut}>
+              <Nav.Link href="" onClick={handleLogOut}>
                 Sign Out
+              </Nav.Link>
+              <Nav.Link href="" onClick={handleShow}>
+                Edit Profile
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
+        <div className="profile-pic">
+          {' '}
+          <img src={photoURL} alt="profile picture" />
+          <p>{`Signed in as: ${currentUser?.email}`}</p>
+        </div>
       </Navbar>
     </>
   );

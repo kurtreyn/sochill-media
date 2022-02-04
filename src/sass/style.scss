@@ -29,6 +29,20 @@ body {
   .nav-logo {
     width: 8rem;
   }
+
+  .profile-pic {
+    display: flex;
+
+    img {
+      max-width: 8rem;
+      padding: 0.5rem;
+      border-radius: 50%;
+    }
+
+    p {
+      padding: 0.5rem;
+    }
+  }
 }
 
 .landing-row {
@@ -114,8 +128,11 @@ body {
     .user-header {
       display: flex;
       align-items: flex-end;
+
       img {
-        max-width: 10%;
+        max-width: 1px;
+        padding: 0.5rem;
+        border-radius: 50%;
       }
       .btnDelPost {
         border: none;
@@ -142,7 +159,9 @@ body {
       display: flex;
       align-items: flex-end;
       img {
-        max-width: 10%;
+        max-width: 8rem;
+        padding: 0.5rem;
+        border-radius: 50%;
       }
     }
   }

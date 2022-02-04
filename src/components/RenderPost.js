@@ -1,17 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import {
-  getDocs,
-  collection,
-  deleteDoc,
-  doc,
-  onSnapshot,
-  QuerySnapshot,
-} from 'firebase/firestore';
-import { db, auth, photoURL } from '../firebase-config';
+import { collection, deleteDoc, doc, onSnapshot } from 'firebase/firestore';
+import { db, auth } from '../firebase-config';
 import { Button, Card } from 'react-bootstrap';
-import blankProfilePic from '../images/blank-profile-pic.png';
 
-export default function RenderPost({ isAuth }) {
+export default function RenderPost({ currentUser, photoURL, isAuth }) {
   const postCollectionRef = collection(db, 'posts');
   const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState([]);
@@ -31,6 +23,8 @@ export default function RenderPost({ isAuth }) {
     };
   }, []);
 
+  console.log(posts);
+
   const deletePost = async (key) => {
     const postToDel = doc(db, 'posts', key);
     await deleteDoc(postToDel);
@@ -39,14 +33,13 @@ export default function RenderPost({ isAuth }) {
   return posts.map((post) => {
     return (
       <div
-        className="col col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 user-form-col"
+        className="col col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 feed-col"
         key={post.id}
       >
         <Card>
-          <Card.Header className="user-header">
-            <h4>@{post.author.name}</h4>
-
-            {/* <img src={post.author.photoURL} alt="profile pic" /> */}
+          <Card.Header className="feed-header">
+            <img src={post.photoURL} alt="profile pic" />
+            <h4>{post.author.name}</h4>
           </Card.Header>
           <Card.Body>{post.postText}</Card.Body>
           {isAuth && post.author.id === auth.currentUser.uid && (

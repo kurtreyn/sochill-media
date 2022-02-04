@@ -1,23 +1,23 @@
 import React, { useRef, useState } from 'react';
 import { Form, Button, Card } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { auth } from '../firebase-config';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 
-function Login() {
+function Signup() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  function signIn(email, password) {
-    return signInWithEmailAndPassword(auth, email, password);
+  function signupUser(email, password) {
+    return createUserWithEmailAndPassword(auth, email, password);
   }
 
-  async function handleLogIn() {
+  async function handleSignup() {
     setLoading(true);
     try {
-      await signIn(emailRef.current.value, passwordRef.current.value);
+      await signupUser(emailRef.current.value, passwordRef.current.value);
     } catch {
       alert('Error');
     }
@@ -29,7 +29,7 @@ function Login() {
     <>
       <Card>
         <Card.Body>
-          <h2 className="text-center mb-4">Sign In</h2>
+          <h2 className="text-center mb-4">Sign Up</h2>
 
           <Form onSubmit="">
             <Form.Group id="email" placeholder="email">
@@ -53,20 +53,15 @@ function Login() {
               disabled={loading}
               className="w-100 mt-2 btn-log-in"
               type="submit"
-              onClick={handleLogIn}
+              onClick={handleSignup}
             >
-              Sign In
+              Sign Up
             </Button>
           </Form>
         </Card.Body>
-        <div className="w-100 text-center mt-2">
-          <p>
-            Need an account? <Link to="/signup">Sign Up</Link>
-          </p>
-        </div>
       </Card>
     </>
   );
 }
 
-export default Login;
+export default Signup;
