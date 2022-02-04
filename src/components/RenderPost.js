@@ -42,17 +42,8 @@ export default function RenderPost({ currentUser, photoURL, isAuth }) {
             <h4>{post.author.name}</h4>
           </Card.Header>
           <Card.Body>{post.postText}</Card.Body>
-          {isAuth && post.author.id === auth.currentUser.uid && (
-            <Card.Footer
-              className="text-muted"
-              onClick={() => {
-                deletePost(post.id);
-              }}
-            >
-              {' '}
-              Delete Post
-            </Card.Footer>
-          )}
+
+          <Card.Footer>{post.postDate}</Card.Footer>
         </Card>
       </div>
     );

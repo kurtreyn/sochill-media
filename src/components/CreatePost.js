@@ -5,21 +5,22 @@ import { useNavigate } from 'react-router-dom';
 import { Modal, Button, Form } from 'react-bootstrap';
 import blankProfilePic from '../images/blank-profile-pic.png';
 
-export default function CreatePost({
-  isAuth,
-  setIsAuth,
-  photoURL,
-  currentUser,
-}) {
+export default function CreatePost({ photoURL, currentUser }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [postText, setPostText] = useState('');
 
+  let postDate = new Date();
+  let dd = String(postDate.getDate()).padStart(2, '0');
+  let mm = String(postDate.getMonth() + 1).padStart(2, '0');
+  let yyyy = postDate.getFullYear();
+
+  postDate = mm + '/' + dd + '/' + yyyy;
+  // document.write(today);
+
   function updateText(e) {
     setPostText(e.target.value.trim());
-    // console.log(postText);
-    console.log(`isAuth is: ${isAuth}`);
   }
 
   const postCollectionRef = collection(db, 'posts');
@@ -33,12 +34,11 @@ export default function CreatePost({
         name: currentUser.email,
         id: auth.currentUser.uid,
       },
+      postDate: postDate,
     });
-    console.log(currentUser.email);
-    console.log(auth.currentUser.uid);
-    // 9SEMWgnEGVO2axX5pESFxdOl22J2
-    // 9SEMWgnEGVO2axX5pESFxdOl22J2
-    // kreynwork
+    // console.log(currentUser.email);
+    // console.log(auth.currentUser.uid);
+
     handleClose();
     navigate('/dashboard');
   };
